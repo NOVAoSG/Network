@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>이미지 선택 갤러리</title>
+  <style>
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 400px;
+    }
+    .image-item {
+      cursor: pointer;
+      border: 2px solid transparent; /* 초기 테두리 없음 */
+    }
+    .selected {
+      border-color: blue; /* 선택된 이미지 테두리 색상 */
+    }
+    .preview {
+      width: 300px;
+      height: 300px;
+      border: 2px solid gray;
+      display: none;
+      background-size: cover;
+      background-position: center;
+    }
+    /* 숨겨진 select 요소 */
+    #imageSelect {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-gallery">
+    <img class="image-item" src="이미지1.jpg" alt="이미지1" data-value="aaa">
+    <img class="image-item" src="이미지2.jpg" alt="이미지2" data-value="bbb">
+    <img class="image-item" src="이미지3.jpg" alt="이미지3" data-value="ccc">
+    <!-- 추가 이미지들... -->
+  </div>
+
+  <!-- 숨겨진 select 요소 -->
+  <select id="imageSelect">
+    <option value="aaa">이미지1</option>
+    <option value="bbb">이미지2</option>
+    <option value="ccc">이미지3</option>
+    <!-- 추가 이미지들... -->
+  </select>
+
+  <div id="preview" class="preview"></div>
+
+  <script>
+    const images = document.querySelectorAll('.image-item');
+    const selectBox = document.getElementById('imageSelect');
+    const preview = document.getElementById('preview');
+
+    images.forEach(image => {
+      image.addEventListener('click', function() {
+        // 이미지 클릭 시 모든 이미지의 선택 상태 제거
+        images.forEach(img => img.classList.remove('selected'));
+        // 클릭된 이미지에 선택 상태 부여
+        this.classList.add('selected');
+        
+        // 클릭된 이미지의 data-value 값을 가져와 readCSV 함수 호출
+        const selectedValue = this.getAttribute('data-value');
+        readCSV(selectedValue);
+      });
+    });
+
+    function readCSV(selectedValue) {
+      // 여기에 readCSV 함수의 로직을 구현해주세요.
+      console.log(`readCSV 함수가 ${selectedValue}를 받아 호출됨`);
+      // 이 부분에 CSV 파일 로드와 데이터 처리 등의 로직을 구현해야 합니다.
+    }
+  </script>
+
+</body>
+</html>

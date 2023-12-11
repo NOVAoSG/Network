@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV 데이터로 작품 정보 출력</title>
+    <style>
+        /* 박스 스타일 */
+        .artwork {
+            border: 1px solid #000;
+            width: 200px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* 이미지 스타일 */
+        .artwork img {
+            max-width: 100%;
+            max-height: 100px;
+            margin-bottom: 10px;
+        }
+
+        /* 제목 스타일 */
+        .title {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- CSV 데이터로 동적으로 작품 정보 출력 -->
+    </div>
+
+    <script>
+        // CSV 파일 경로
+        const csvFilePath = 'output.csv';
+
+        // CSV 파일 가져오기
+        fetch(csvFilePath)
+            .then(response => response.text())
+            .then(csvData => {
+                // 줄 단위로 데이터 분할 후 각 행에서 쉼표로 데이터 분할
+                const rows = csvData.trim().split('\n');
+                const data = rows.map(row => row.split(','));
+
+                // 컨테이너 엘리먼트
+                const container = document.getElementById('container');
+
+                // 각 행마다 작품 정보 출력
+                for (let i = 0; i < data.length; i++) {
+                    const artwork = document.createElement('div');
+                    artwork.classList.add('artwork');
+                    container.appendChild(artwork);
+
+                    // 이미지 추가
+                    const image = document.createElement('img');
+                    image.src = data[i][0]; // 파일경로
+                    artwork.appendChild(image);
+
+                    // 작품명 추가
+                    const title = document.createElement('p');
+                    title.classList.add('title');
+                    title.textContent = data[i][1]; // 작품명
+                    artwork.appendChild(title);
+
+                    // 작가와 년도 추가
+                    const authorAndYear = document.createElement('p');
+                    authorAndYear.textContent = `${data[i][2]} ${data[i][3]}`; // 작가와 년도
+                    artwork.appendChild(authorAndYear);
+
+                    // 소재 추가
+                    const material = document.createElement('p');
+                    material.textContent = data[i][4]; // 소재
+                    artwork.appendChild(material);
+
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>

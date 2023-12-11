@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GangMi Exhibition</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@200;400;600;700&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    body{
+      background-color: #EEE;
+
+    }
+
+    header{
+      background-color: #EEE;
+      font-family: 'Afacad', sans-serif;
+      
+      
+      text-align: center;
+      padding: 20px;
+      color: tomato;
+    }
+
+    header p:first-child{
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 0px;
+    }
+    header p:nth-child(2){
+      margin-top: -10px;
+    }
+    header p:nth-child(3){
+
+    }
+
+    .nav{
+      font-family: 'Afacad', sans-serif;
+      background-color: #EEE;
+      text-align: center;
+      font-weight: 400;
+      font-size: 30px;
+      color:tomato;
+    }
+
+    .nav p{
+      padding: 10px;
+      border-top: 2px solid tomato;
+      border-bottom: 2px solid white; /* 하단에 1px의 실선 추가 */
+    }
+
+
+    .wrap{
+      font-family: 'Afacad', sans-serif;
+      height: 150px;
+      overflow-x: scroll;
+      white-space:nowrap;
+      
+      }
+
+    .image-item{
+      cursor: pointer;
+      border: 2px solid transparent; /* 초기 테두리 없음 */
+      max-height: 88%;
+    }
+    .selected {
+      border-color: tomato; /* 선택된 이미지 테두리 색상 */
+    }
+
+    #imageSelect {
+      display: none;
+    }
+
+    footer {
+        background-color: aquamarine;
+    }
+    /* 스타일링 */
+    #artworks-container {      
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      /* padding: 0 20px; */
+      border: 2px solid white;
+
+      gap: 20px
+    }
+    .artwork-item {
+      flex:0 0 calc(600px - 30px);
+      background-color: white;
+      width: 30%;
+      
+      padding: 1%;
+      border: 1px solid #ccc;
+      transition: width 1s ease, background-color 0.5s;
+    }
+
+    .artwork-item:hover{
+      border: 1px solid tomato;
+      transition: border 0.5s;
+    }
+
+    .artwork-item img {
+      
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 10px;
+      box-shadow: 0px 0px 10px gray;
+    }
+
+    .artwork-title {
+      font-family: 'Nanum Gothic', sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+    .artist-name {
+      font-family: 'Nanum Gothic', sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    .details {
+      font-family: 'Nanum Gothic', sans-serif;
+      font-weight: 200;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+    .description {
+      font-family: 'Nanum Gothic', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .instagram {
+      font-size: 10px;
+      vertical-align: bottom;
+      text-align: right;
+    }
+
+
+
+    @media screen and (max-width: 768px) {
+    .artwork-item {
+      width: 100%; /* 화면 너비에 꽉 차도록 설정 */
+    }
+  }
+
+
+  </style>
+
+</head>
+<body>
+
+  <header>
+    <p>Gangmiban Exhibition Site</p>
+    <p> Sogang Univ, a fine arts club </p>
+    <p>Since 1965</p>
+  </header>
+
+  <div class = "nav">
+    <p>Exhibition LIST</p>
+      <div class="wrap">
+        <img class="image-item" src="title/Exhib_101.png" data-value="Exhib_101.csv">
+        <img class="image-item" src="title/Exhib_100.jpeg" data-value="Exhib_100.csv">
+        <img class="image-item" src="title/Exhib_099.jpg" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_098.jpeg" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_097.jpg" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_096.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_095.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_094.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_093.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_092.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_091.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_090.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_089.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_088.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_087.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_086.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_085.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_084.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_083.png" data-value="unready.csv">
+        <img class="image-item" src="title/Exhib_082.png" data-value="unready.csv">
+
+
+      </div>
+    </div>
+
+
+  
+  
+  <div id="artworks-container">
+
+  <script>
+    // CSV 파일 읽기 함수
+    function readCSV(file) {
+      fetch(file)
+        .then(response => response.text())
+        .then(data => {
+          clearArtworks(); // 새로운 데이터를 로드하기 전에 기존 내용을 삭제
+          processData(data); // 새로운 데이터 처리
+        })
+        .catch(error => console.error('파일을 로드하는 중 오류가 발생했습니다:', error)); // 오류 처리
+    }
+
+    // CSV 데이터 처리 함수
+    function processData(data) {
+      const rows = data.split('\n').map(row => row.split('^'));
+      const container = document.getElementById('artworks-container');
+
+      for (let i = 0; i < rows.length; i++) {
+        const artworkItem = document.createElement('div');
+        artworkItem.classList.add('artwork-item');
+
+        const artworkData = rows[i];
+        if (artworkData.length === 7) {
+          const [imagePath, title, artist, technique, size, description, instagram] = artworkData;
+
+          const img = document.createElement('img');
+          img.src = imagePath;
+          artworkItem.appendChild(img);
+
+          const titleElem = document.createElement('div');
+          titleElem.classList.add('artwork-title');
+          titleElem.textContent = title;
+          artworkItem.appendChild(titleElem);
+
+          const artistElem = document.createElement('div');
+          artistElem.classList.add('artist-name');
+          artistElem.textContent = artist;
+          artworkItem.appendChild(artistElem);
+
+          const detailsElem = document.createElement('div');
+          detailsElem.classList.add('details');
+          detailsElem.textContent = `${technique}, ${size}`;
+          artworkItem.appendChild(detailsElem);
+
+          const descriptionElem = document.createElement('div');
+          descriptionElem.classList.add('description');
+          descriptionElem.innerHTML = description.replace(/\n/g, '<br>');
+          artworkItem.appendChild(descriptionElem);
+
+          const instagramElem = document.createElement('div');
+          instagramElem.classList.add('instagram');
+          instagramElem.textContent = `${instagram}`;
+          artworkItem.appendChild(instagramElem);
+        } else {
+          artworkItem.textContent = '잘못된 데이터 형식입니다.';
+        }
+
+        container.appendChild(artworkItem);
+      }
+    }
+
+    function clearArtworks() {
+      const container = document.getElementById('artworks-container');
+      container.innerHTML = ''; // 컨테이너 내용 비우기
+    }
+
+    //이미지 셀렉트 파트
+    const images = document.querySelectorAll('.image-item');
+    const selectBox = document.getElementById('imageSelect');
+
+    images.forEach(image => {
+      image.addEventListener('click', function() {
+        // 이미지 클릭 시 모든 이미지의 선택 상태 제거
+        images.forEach(img => img.classList.remove('selected'));
+        // 클릭된 이미지에 선택 상태 부여
+        this.classList.add('selected');
+        
+        // 선택된 이미지의 value(여기서는 이미지 이름)를 가져와 readCSV 함수 호출
+        const selectedValue = this.getAttribute('data-value');
+        console.log(selectedValue)
+        readCSV(selectedValue);
+      });
+    });
+    
+
+    // 초기 로드 시 기본 CSV 파일을 불러오도록 설정
+    readCSV('Exhib_101.csv');
+  
+
+    // CSV 파일 호출
+    // readCSV('output.csv');
+  </script>
+  </div>
+
+  <footer>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam distinctio similique dignissimos vitae at voluptatem, laboriosam minima iste. Voluptatibus reiciendis eveniet iste, aspernatur tempore laboriosam vero saepe amet accusamus nesciunt?</p>
+  </footer>
+</body>
+</html>

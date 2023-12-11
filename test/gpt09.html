@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>좌우에 비어있는 Div</title>
+  <style>
+    /* 좌우에 비어있는 div를 감싸는 컨테이너 */
+    .container {
+      display: flex; /* Flexbox를 사용하여 내부 요소를 배치 */
+      justify-content: space-between; /* 좌우 정렬 */
+      padding: 20px; /* 좌우 여백을 위한 패딩 */
+      background-color: lightgray; /* 배경색 설정 */
+    }
+
+    /* 비어있는 div */
+    .empty-div {
+      width: 100px; /* 너비 설정 */
+      height: 100px; /* 높이 설정 */
+      background-color: white; /* 배경색 설정 */
+      border: 1px solid black; /* 테두리 설정 */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="empty-div"></div>
+    <div class="empty-div"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>이미지 선택 갤러리</title>
+  <style>
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 400px;
+    }
+    .image-item {
+      cursor: pointer;
+      border: 2px solid transparent; /* 초기 테두리 없음 */
+    }
+    .selected {
+      border-color: blue; /* 선택된 이미지 테두리 색상 */
+    }
+
+    #imageSelect {
+      display: none;
+    }
+
+    .preview {
+      width: 300px;
+      height: 300px;
+      border: 2px solid gray;
+      display: none;
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-gallery">
+    <img class="image-item" src="이미지1.jpg" alt="이미지1">
+    <img class="image-item" src="이미지2.jpg" alt="이미지2">
+    <img class="image-item" src="이미지3.jpg" alt="이미지3">
+    <!-- 추가 이미지들... -->
+  </div>
+
+  <select id="imageSelect">
+    <option value="이미지1.jpg">이미지1</option>
+    <option value="이미지2.jpg">이미지2</option>
+    <option value="이미지3.jpg">이미지3</option>
+    <!-- 추가 이미지들... -->
+  </select>
+
+  <div id="preview" class="preview"></div>
+
+  <script>
+    const images = document.querySelectorAll('.image-item');
+    const selectBox = document.getElementById('imageSelect');
+    const preview = document.getElementById('preview');
+
+    images.forEach(image => {
+      image.addEventListener('click', function() {
+        // 이미지 클릭 시 모든 이미지의 선택 상태 제거
+        images.forEach(img => img.classList.remove('selected'));
+        // 클릭된 이미지에 선택 상태 부여
+        this.classList.add('selected');
+
+        // 선택된 이미지의 src를 가져와 미리보기에 표시
+        const selectedSrc = this.getAttribute('src');
+        preview.style.backgroundImage = `url('${selectedSrc}')`;
+        preview.style.display = 'block';
+
+        // 선택된 이미지를 select 요소에서 선택된 상태로 변경
+        selectBox.value = selectedSrc;
+      });
+    });
+
+    selectBox.addEventListener('change', function() {
+      const selectedValue = this.value;
+
+      // select 요소에서 선택된 이미지를 찾아 효과 부여
+      images.forEach(image => {
+        if (image.getAttribute('src') === selectedValue) {
+          // 이미지 선택 시 모든 이미지의 선택 상태 제거
+          images.forEach(img => img.classList.remove('selected'));
+          // 선택된 이미지에 선택 상태 부여
+          image.classList.add('selected');
+
+          // 선택된 이미지의 src를 가져와 미리보기에 표시
+          preview.style.backgroundImage = `url('${selectedValue}')`;
+          preview.style.display = 'block';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

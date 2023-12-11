@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>텍스트 파일 불러오기 예제</title>
+</head>
+<body>
+  <div id="fileContent"></div>
+
+  <script>
+    // 파일 경로 설정
+    var filePath = 'output.txt';
+
+    // fetch API를 사용하여 파일을 가져오는 방법
+    fetch(filePath)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(text => {
+        // 줄바꿈 문자(\n)를 HTML의 줄바꿈 태그(<br>)로 변환하여 출력
+        var formattedText = text.replace(/\n/g, '<br>');
+        
+        // 가져온 텍스트를 HTML 요소에 넣기
+        document.getElementById('fileContent').innerHTML = formattedText;
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  </script>
+</body>
+</html>
