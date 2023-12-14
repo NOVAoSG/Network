@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>마우스 위치에 따라 글자 크기 변경</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    footer {
+      background-color: #f0f0f0;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px; /* 기본 글자 크기 */
+    }
+
+    footer span {
+      transition: font-size 0.1s ease; /* 글자 크기 변경을 부드럽게 만드는 트랜지션 */
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- 본문 내용 -->
+  </main>
+
+  <footer>
+    <span>가</span>
+    <span>나</span>
+    <span>다</span>
+  </footer>
+
+  <script>
+    const spans = document.querySelectorAll('footer span');
+
+    document.addEventListener('mousemove', (e) => {
+      const x = e.pageX;
+      const width = window.innerWidth;
+      const spanWidth = 33.33; // 각 span이 차지하는 영역의 너비 (% 기준)
+
+      spans.forEach((span, index) => {
+        const start = spanWidth * index;
+        const end = start + spanWidth;
+
+        if (x >= start / 100 * width && x <= end / 100 * width) {
+          const distanceToLeft = x - start / 100 * width;
+          const distanceToRight = end / 100 * width - x;
+
+          let fontSize = 15; // 기본 글자 크기
+          if (distanceToLeft < spanWidth / 2 && index > 0) {
+            fontSize += 12; // 마우스 위치 왼쪽 글자 크기 증가
+          } else if (distanceToRight < spanWidth / 2 && index < spans.length - 1) {
+            fontSize += 12; // 마우스 위치 오른쪽 글자 크기 증가
+          }
+
+          span.style.fontSize = `${fontSize}px`;
+        } else {
+          span.style.fontSize = '12px'; // 기본 크기로 다시 설정
+        }
+      });
+    });
+  </script>
+</body>
+</html>
