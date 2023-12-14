@@ -6,8 +6,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@200;400;600;700&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;600;700&family=Grandiflora+One&family=IBM+Plex+Sans+KR:wght@100;200;300&family=Noto+Sans+KR&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     body{
       background-color: #EEE;
@@ -74,8 +74,14 @@
     }
 
     footer {
-        background-color: aquamarine;
+      border-top: 1px solid tomato;
+      background-color: aquamarine;
     }
+
+    .divlink {
+      background-color: aquamarine;
+    }
+      
     /* 스타일링 */
     #artworks-container {      
       display: flex;
@@ -83,7 +89,7 @@
       justify-content: space-between;
       /* border: 2px solid white; */
 
-      gap: 30px
+      gap: 10px 1%
     }
     .artwork-item {
       /* flex:0 0 */
@@ -110,33 +116,46 @@
     }
 
     .artwork-title {
-      font-family: 'Nanum Gothic', sans-serif;
-      font-weight: 600;
+      font-family: 'IBM Plex Sans KR', sans-serif;
+      font-weight: 300;
       font-size: 28px;
       margin-bottom: 5px;
     }
     .artist-name {
-      font-family: 'Nanum Gothic', sans-serif;
-      font-weight: 400;
+      font-family: 'IBM Plex Sans KR', sans-serif;
+      font-weight: 200;
       font-size: 20px;
       margin-bottom: 5px;
     }
     .details {
-      font-family: 'Nanum Gothic', sans-serif;
-      font-weight: 200;
+      font-family: 'IBM Plex Sans KR', sans-serif;
+      font-weight: 100;
       font-size: 12px;
       margin-bottom: 5px;
     }
     .description {
-      font-family: 'Nanum Gothic', sans-serif;
-      font-weight: 300;
+      font-family: 'IBM Plex Sans KR', sans-serif;
+      font-weight: 200;
       font-size: 16px;
       margin-bottom: 10px;
+      
     }
-    .instagram {
-      font-size: 10px;
-      vertical-align: bottom;
+    .insta{
       text-align: right;
+    }
+
+    .instagram{
+      /* display: block; */
+      color: black;
+      font-family: 'Grandiflora One';
+      font-size: 14px;
+      
+      /* float: right; */
+      text-decoration: none;
+      
+    }
+    .instagram:hover {
+      text-decoration: underline;
     }
 
 
@@ -244,10 +263,17 @@
           descriptionElem.innerHTML = description.replace(/\n/g, '<br>');
           artworkItem.appendChild(descriptionElem);
 
-          const instagramElem = document.createElement('div');
-          instagramElem.classList.add('instagram');
-          instagramElem.textContent = `${instagram}`;
-          artworkItem.appendChild(instagramElem);
+          const insta = document.createElement('div');
+          insta.classList.add('insta');
+          insta.textContent = 'a'
+          artworkItem.appendChild(insta);
+
+          const instagramLink = document.createElement('a'); // Create anchor element
+          instagramLink.classList.add('instagram');
+          instagramLink.href = `https://www.instagram.com/${instagram.replace('@', '')}`; // Set Instagram link
+          instagramLink.textContent = `${instagram}`;
+          insta.appendChild(instagramLink);
+          // artworkItem.appendChild(instagramLink);
         } else {
           artworkItem.textContent = '잘못된 데이터 형식입니다.';
         }
@@ -290,7 +316,9 @@
   </div>
 
   <footer>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam distinctio similique dignissimos vitae at voluptatem, laboriosam minima iste. Voluptatibus reiciendis eveniet iste, aspernatur tempore laboriosam vero saepe amet accusamus nesciunt?</p>
+    <div class="divlink">
+      <p>dd</p>
+    </div>
   </footer>
 </body>
 </html>
