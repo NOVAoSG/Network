@@ -10,15 +10,13 @@
 
   <style>
     body{
-      background-color: #EEE;
+      background-color: #fffff0;
 
     }
 
     header{
-      background-color: #EEE;
+      background-color: #fffff0;
       font-family: 'Afacad', sans-serif;
-      
-      
       text-align: center;
       padding: 20px;
       color: tomato;
@@ -28,15 +26,15 @@
       font-size: 28px;
       font-weight: 400;
       margin-bottom: 0px;
+
     }
     header p:nth-child(2){
       margin-top: -10px;
     }
 
-
     .nav{
       font-family: 'Afacad', sans-serif;
-      background-color: #EEE;
+      background-color: #fffff0;
       text-align: center;
       font-weight: 400;
       font-size: 30px;
@@ -46,16 +44,14 @@
     .nav p{
       padding: 10px;
       border-top: 2px solid tomato;
-      border-bottom: 2px solid white; /* 하단에 1px의 실선 추가 */
+      border-bottom: 2px solid rgb(255, 162, 145); /* 하단에 1px의 실선 추가 */
     }
-
 
     .wrap{
       font-family: 'Afacad', sans-serif;
       height: 150px;
       overflow-x: scroll;
       white-space:nowrap;
-      
       }
 
     .image-item{
@@ -73,7 +69,7 @@
 
     footer {
       font-family: 'Grandiflora One';
-      background-color: #f0f0f0;
+      background-color: #fffff0;
       height: 100px;
       display: flex;
       justify-content: center;
@@ -89,8 +85,7 @@
       
     }
 
-    .divlink {
-      
+    .divlink {      
       text-align: center;
     }
       
@@ -99,12 +94,9 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      /* border: 2px solid white; */
-
       gap: 10px 1%
     }
     .artwork-item {
-      /* flex:0 0 */
       background-color: white;
       width: 30%;
       
@@ -119,7 +111,6 @@
     }
 
     .artwork-item img {
-      
       max-width: 100%;
       height: auto;
       display: block;
@@ -157,12 +148,9 @@
     }
 
     .instagram{
-      /* display: block; */
       color: black;
       font-family: 'Grandiflora One';
       font-size: 14px;
-      
-      /* float: right; */
       text-decoration: none;
       
     }
@@ -195,7 +183,8 @@
   <div class = "nav">
     <p>Exhibition LIST</p>
       <div class="wrap">
-        <img class="image-item" src="title/Exhib_101.png" data-value="Exhib_101.csv">
+        <img class="image-item" src="title/Exhib_101.png" data-value="Exhib_101.csv"> 
+        <!-- data-value에는 연결해야하는 CSV파일을 적어야합니다. -->
         <img class="image-item" src="title/Exhib_100.jpeg" data-value="Exhib_100.csv">
         <img class="image-item" src="title/Exhib_099.jpg" data-value="unready.csv">
         <img class="image-item" src="title/Exhib_098.jpeg" data-value="unready.csv">
